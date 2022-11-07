@@ -14,20 +14,15 @@ class CancionesController{
 
     function obtenerCanciones($params=[]){
         if(empty($params)){
-            $canciones = $this->model->getCanciones();
+            $canciones = $this->model->obtenerCanciones();
             $this->view->response($canciones,200);
           }
         else{
-            $cancion = $this->model->getCanciones($params[":ID"]);
+            $cancion = $this->model->obtenerCancion($params[":ID"]);
             if(!empty($cancion)) {
-            $this->view->response($cancion,200);
+                $this->view->response($cancion,200);
             }
         }  
-
-        // header("Content-Type: application/json");
-        // header("HTTP/1.1 200 'OK'");
-        // echo "anda de 10";
-
     }
 
 }
