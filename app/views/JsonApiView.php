@@ -1,5 +1,5 @@
 <?php
-class CancionesAPIView{
+class JSONAPIView{
     function response($canciones, $codigo){
         header("Content-Type: application/json");
         header("HTTP/1.1 " . $codigo . " " . $this->_requestStatus($codigo));
@@ -12,7 +12,7 @@ class CancionesAPIView{
             201 => "Created",
             400 => "Bad request",
             404 => "Not found",
-            500 => "Internal Server Error",  
+            500 => "Internal Server Error"  
         ];
           return (isset($estado[$codigo]))? $estado[$codigo] : $estado[500];
     }
