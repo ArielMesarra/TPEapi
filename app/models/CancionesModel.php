@@ -19,9 +19,22 @@ class CancionesModel{
             $cancion = $query->fetch(PDO::FETCH_OBJ);
             return $cancion;
         }
+
+        function crearCancion($data){
+            $query = $this->db->prepare('INSERT INTO canciones (nombre, descripcion, fecha_estreno, fk_id_artistas) VALUES (?,?,?,?)');
+            $query->execute([$data->nombre, $data->descripcion,  $data->fecha_estreno, $data->fk_id_artistas]);
+            return $this->db->lastInsertId();
+        }
+
+        function editarCancion($data, $id){
+            $query = $this->db->prepare('UPDATE canciones SET nombre=?, descripcion=?, fecha_estreno=?, fk_id_artistas=? WHERE id_canciones=?');
+            $query->execute([$data->nombre, $data->descripcion, $data->fecha_estreno, $data->fk_id_artistas, $id]);
+        }
         
-
+        function borrarCancion($id){
+            $query = $this->db->prepare('DELETE FROM canciones WHERE id_canciones=?');
+            $query->execute([$id]);
+        }
 }
-
 
 ?>

@@ -1,13 +1,13 @@
 <?php
 require_once "app/controllers/AbsCancionesController.php";
-require_once "app/models/AgreditarCancionModel.php";
+require_once "app/models/CancionesModel.php";
 
 
 class AgreditarCancionesController extends AbsCancionesController{
 
     function __construct() {
         parent::__construct();
-        $this->model = new AgreditarCancionModel();
+        $this->model = new CancionesModel();
     }
 
     function agreditarCancion($params=[]){
