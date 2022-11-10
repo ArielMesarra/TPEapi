@@ -21,6 +21,7 @@ class CancionesModel{
         }
 
         function crearCancion($data){
+    
             $query = $this->db->prepare('INSERT INTO canciones (nombre, descripcion, fecha_estreno, fk_id_artistas) VALUES (?,?,?,?)');
             $query->execute([$data->nombre, $data->descripcion,  $data->fecha_estreno, $data->fk_id_artistas]);
             return $this->db->lastInsertId();

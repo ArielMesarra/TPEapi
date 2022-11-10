@@ -11,15 +11,15 @@ class BorrarCancionController {
         $this->view = new JSONAPIView();
     }
 
-    function borrarCancion($params=[]){
+    function borrarCancion($params=[]) {
         $task_id = $params[":ID"];
         $task = $this->model->obtenerCancion($task_id);
 
-        if($task){
+        if($task) {
             $this->model->borrarCancion($task_id);
             $this->view->response("Cancion id: ".$task_id." eliminada exitosamente", 200);
         }
-        else{
+        else {
             $this->view->response("Cancion id: ".$task_id." no fue encontrada", 404);
         }
     }

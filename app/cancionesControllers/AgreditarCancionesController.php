@@ -1,9 +1,9 @@
 <?php
-require_once "app/controllers/AbsCancionesController.php";
+require_once "app/absController/AbsController.php";
 require_once "app/models/CancionesModel.php";
 
 
-class AgreditarCancionesController extends AbsCancionesController{
+class AgreditarCancionesController extends AbsController{
 
     function __construct() {
         parent::__construct();
@@ -12,16 +12,24 @@ class AgreditarCancionesController extends AbsCancionesController{
 
     function agreditarCancion($params=[]){
         if(empty($params)){
-            $valor = $this->model->crearCancion($this->getData());
-            if(isset($valor)){
-                $this->view->response($valor, 201);
+            $cancion = $this->model->crearCancion($this->obtenerDatos());
+            if(isset($cancion)){
+                $this->view->response($cancion, 201);
             }
             else{
                 $this->view->response("No se pudo agregar", 500);
             }
         }
         else{
-            $this->model->editarCancion($this->getData(), $params[":ID"]);
+            $id = $params[":ID"];
+            $task = $this->model->obtenerCanciones($id);
+            if($task){
+                $this->model->editarCancion($this->obtenerDatos(), $params[":ID"]);             
+                $this->view->response("La cancion id: ".$params[":ID"]." se edito correctamente", 200);   
+            }
+            else{
+                $this->view->response("No se pudo encontrar una cancion con el id: ".$params[":ID"], 404);
+            }
         }
     }
 

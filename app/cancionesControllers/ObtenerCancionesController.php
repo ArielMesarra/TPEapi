@@ -2,7 +2,7 @@
 require_once "app/models/CancionesModel.php";
 require_once "app/views/JsonApiView.php";
 
-class CancionesController {
+class ObtenerCancionesController {
     private $model;
     private $view;
 
@@ -17,8 +17,11 @@ class CancionesController {
             $this->view->response($canciones, 200);
         } else {
             $cancion = $this->model->obtenerCancion($params[":ID"]);
-            if (!empty($cancion)) {
+            if(!empty($cancion)) {
                 $this->view->response($cancion, 200);
+            }
+            else{
+                $this->view->response("No se encontro la cancion con el id: ".$params[":ID"], 404);
             }
         }
     }

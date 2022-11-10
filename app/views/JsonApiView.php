@@ -1,9 +1,9 @@
 <?php
 class JSONAPIView{
-    function response($canciones, $codigo){
+    function response($datos, $codigo){
         header("Content-Type: application/json");
         header("HTTP/1.1 " . $codigo . " " . $this->_requestStatus($codigo));
-        echo json_encode($canciones);
+        echo json_encode($datos);
     }
 
     private function _requestStatus($codigo){
