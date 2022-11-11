@@ -13,9 +13,16 @@ class ObtenerCancionesController {
 
     function obtenerCanciones($params = []) {
         if (empty($params)) {
-            $canciones = $this->model->obtenerCanciones();
-            $this->view->response($canciones, 200);
-        } else {
+            $d = 0;
+            $h = 500;
+            if(isset($_GET["desde"])&&isset($_GET["hasta"])){
+                $d = $_GET["desde"];
+                $h = $_GET["hasta"];
+            }
+                $canciones = $this->model->obtenerCanciones($d, $h);
+                $this->view->response($canciones, 200);
+            }
+        else {
             $cancion = $this->model->obtenerCancion($params[":ID"]);
             if(!empty($cancion)) {
                 $this->view->response($cancion, 200);
