@@ -6,12 +6,10 @@ class CancionesModel{
             $this->db = new PDO('mysql:host=localhost;'.'dbname=biblioteca_bd;charset=utf8', 'root', '');
         }
         
-        function obtenerCanciones($d, $h){
-            $columna = "nombre";
-            $query=$this->db->prepare('SELECT c.*,a.nombre AS nombreDeArtista FROM canciones AS c INNER JOIN artistas AS a ON c.fk_id_artistas = a.id_artistas ORDER BY :columna LIMIT :desde, :hasta ');
+        function obtenerCanciones($d, $h, $columna, $order){
+            $query = $this->db->prepare('SELECT c.*,a.nombre AS nombreDeArtista FROM canciones AS c INNER JOIN artistas AS a ON c.fk_id_artistas = a.id_artistas ORDER BY '.$columna.' '.$order.' LIMIT :desde, :hasta');
             $query->bindParam(':desde', $d, PDO::PARAM_INT);
             $query->bindParam(':hasta', $h, PDO::PARAM_INT);
-            $query->bindParam(':columna', $columna, PDO::PARAM_STR);
             $query->execute();
             $canciones = $query->fetchAll(PDO::FETCH_OBJ);
             return $canciones;
