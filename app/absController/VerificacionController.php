@@ -2,14 +2,15 @@
 abstract class VerificacionController{
     protected $desde = 0;
     protected $hasta = 500;
-    protected $columna = "nombre";
+    protected $columna = "";
     protected $order = "ASC";
-    protected $filtro ;
+    protected $filtro;
     protected $filtroValor = "";
 
     function verificar($referencia, $columna){
         echo "entraste a verificar";
         $por = "";
+        $filtro = "";
         if(isset($_GET["desde"])&&isset($_GET["hasta"])){
             $this->desde = $_GET["desde"];
             $this->hasta = $_GET["hasta"];

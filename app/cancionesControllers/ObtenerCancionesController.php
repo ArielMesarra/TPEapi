@@ -13,7 +13,7 @@ class ObtenerCancionesController extends VerificacionController{
 
     function obtenerCanciones($params = []) {
         if (empty($params)) {
-            $referencia = $this->model->obtenerCanciones(0,1,"nombre","ASC", "id_canciones", "");
+            $referencia = $this->model->obtenerCanciones(0,1,"nombre_canciones","ASC", "id_canciones", "");
             $this->verificar($referencia, "id_canciones");
             $canciones = $this->model->obtenerCanciones($this->desde, $this->hasta, $this->columna, $this->order, $this->filtro, $this->filtroValor);
             $this->view->response($canciones, 200);

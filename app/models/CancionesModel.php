@@ -8,9 +8,8 @@ class CancionesModel{
         
         function obtenerCanciones($desde, $hasta, $columna, $order, $filtro, $filtroPor){
             
-            $filtro = 'c.'.$filtro;
             $filtroPor = '%'.$filtroPor.'%';
-            $query = $this->db->prepare('SELECT c.*,a.nombre AS nombreDeArtista FROM canciones AS c INNER JOIN artistas AS a ON c.fk_id_artistas = a.id_artistas WHERE '.$filtro.' LIKE "'.$filtroPor.'" ORDER BY '.$columna.' '.$order.' LIMIT :desde, :hasta ');
+            $query = $this->db->prepare('SELECT canciones.*,a.nombre_artistas FROM canciones INNER JOIN artistas AS a ON fk_id_artistas = a.id_artistas WHERE '.$filtro.' LIKE "'.$filtroPor.'" ORDER BY '.$columna.' '.$order.' LIMIT :desde, :hasta ');
             $query->bindParam(':desde', $desde, PDO::PARAM_INT);
             $query->bindParam(':hasta', $hasta, PDO::PARAM_INT);
             $query->execute();
