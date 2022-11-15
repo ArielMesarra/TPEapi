@@ -8,6 +8,7 @@ abstract class VerificacionController{
     protected $filtroValor;
 
     function verificar($referencia, $columna){
+        echo "entraste a verificar";
         $por = "";
         if(isset($_GET["desde"])&&isset($_GET["hasta"])){
             $this->desde = $_GET["desde"];
