@@ -4,8 +4,8 @@ abstract class VerificacionController{
     protected $hasta = 500;
     protected $columna = "nombre";
     protected $order = "ASC";
-    protected $filtro;
-    protected $filtroValor;
+    protected $filtro ;
+    protected $filtroValor = "";
 
     function verificar($referencia, $columna){
         echo "entraste a verificar";
@@ -25,16 +25,20 @@ abstract class VerificacionController{
         }
 
         if(isset($_GET["filtro"])){
-           $this->filtro = $_GET["filtro"];
+           $filtro = $this->filtro = $_GET["filtro"];
+        }
+        else{
+            $this->filtro = $columna;
         }
 
         if(isset($_GET["filtroValor"])){
             $this->filtroValor = $_GET["filtroValor"];
          }
+        
 
-        // if(empty($referencia[0]->$filtro)){
-        //     $this->filtro = $columna;
-        // }
+        if(empty($referencia[0]->$filtro)){
+            $this->filtro = $columna;
+        }
         
 
         
