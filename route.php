@@ -11,6 +11,9 @@ require_once 'app/artistaControllers/ObtenerArtistasController.php';
 require_once 'app/artistaControllers/AgreditarArtistasController.php';
 require_once 'app/artistaControllers/BorrarArtistaController.php';
 
+//require de auth controller
+require_once 'app/authController/AuthApiController.php';
+
 // crea el router
 $router = new Router();
 
@@ -27,6 +30,9 @@ $router->addRoute('artistas/:ID', 'GET', 'ObtenerArtistasController', 'obtenerAr
 $router->addRoute('artistas', 'POST', 'AgreditarArtistasController', 'agreditarArtista');
 $router->addRoute('artistas/:ID', 'PUT', 'AgreditarArtistasController', 'agreditarArtista');
 $router->addRoute('artistas/:ID', 'DELETE', 'BorrarArtistaController', 'borrarArtista');
+
+//ruteo de token
+$router->addRoute("auth/token", 'GET', 'AuthApiController', 'getToken');
 
 // rutea
 $router->route($_GET["resource"], $_SERVER['REQUEST_METHOD']);

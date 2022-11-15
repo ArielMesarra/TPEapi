@@ -11,25 +11,32 @@ class AgreditarCancionesController extends AbsController{
     }
 
     function agreditarCancion($params=[]){
-        if(empty($params)){
-            $cancion = $this->model->crearCancion($this->obtenerDatos());
-            if(isset($cancion)){
-                $this->view->response($cancion, 201);
+
+        if($this->authHelper->isLoggedIn()){
+            if(empty($params)){
+                $cancion = $this->model->crearCancion($this->obtenerDatos());
+                if(isset($cancion)){
+                    $this->view->response($cancion, 201);
+                }
+                else{
+                    $this->view->response("No se pudo agregar", 500);
+                }
             }
             else{
-                $this->view->response("No se pudo agregar", 500);
+                $id = $params[":ID"];
+                $task = $this->model->obtenerCancion($id);
+                if($task){
+                    $this->model->editarCancion($this->obtenerDatos(), $params[":ID"]);             
+                    $this->view->response("La cancion id: ".$params[":ID"]." se edito correctamente", 200);   
+                }
+                else{
+                    $this->view->response("No se pudo encontrar una cancion con el id: ".$params[":ID"], 404);
+                }
             }
+
         }
         else{
-            $id = $params[":ID"];
-            $task = $this->model->obtenerCancion($id);
-            if($task){
-                $this->model->editarCancion($this->obtenerDatos(), $params[":ID"]);             
-                $this->view->response("La cancion id: ".$params[":ID"]." se edito correctamente", 200);   
-            }
-            else{
-                $this->view->response("No se pudo encontrar una cancion con el id: ".$params[":ID"], 404);
-            }
+            $this->view->response("No estas logueado", 401);
         }
     }
 

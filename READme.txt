@@ -46,3 +46,10 @@ api/canciones?filtro=nombre_canciones
 api/canciones?filtro=descripcion
 api/canciones?filtro=fecha_estreno
 api/canciones?filtro=fk_id_artistas
+
+API TOKEN:
+Obtene tu "token" ingresando "auth/token" en la url para ingresar y en la cabecera "Authorization" elegir entre las opciones "Basic auth".
+En caso de estar logueado, copiar el "token", elegir entre las opciones "OAuth 2.0" y pegar el "token" en el campo que indica "Access token".
+
+Usuario: pepito
+Contraseña: tpeapi
