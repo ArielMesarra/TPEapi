@@ -1,4 +1,5 @@
 <?php
+require_once './app/models/UsuariosModel.php';
 require_once './app/views/JsonApiView.php';
 require_once 'authApiHelper.php';
 
@@ -8,9 +9,10 @@ function base64url_encode($data) {
 
 
 class AuthApiController extends AbsController{
-
+    
     public function __construct() {
         parent::__construct();
+        $this->model = new UsuariosModel();
     }
 
     public function getToken($params = null) {
@@ -32,7 +34,8 @@ class AuthApiController extends AbsController{
         $userpass = explode(":", $userpass);
         $user = $userpass[0];
         $pass = $userpass[1];
-        if($user == "Pepito" && $pass == "tpeapi"){
+        $usuario = $this->model->obtenerUsuario($user);
+        if($usuario && password_verify($pass, ($usuario->contraseña))){
             //  crear un token
             $header = array(
                 'alg' => 'HS256',
@@ -40,7 +43,7 @@ class AuthApiController extends AbsController{
             );
             $payload = array(
                 'id' => 1,
-                'name' => "Pepito",
+                'name' => $usuario->nombre,
                 'exp' => time()+3600
             );
             $header = base64url_encode(json_encode($header));

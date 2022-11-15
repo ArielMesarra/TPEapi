@@ -1,6 +1,6 @@
 <?php
 require_once "app/views/JsonApiView.php";
-require "app/authController/AuthApiController.php";
+require_once "app/authController/AuthApiController.php";
 
 abstract class AbsController {
     protected $model; // lo instancia el hijo

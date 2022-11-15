@@ -12,17 +12,23 @@ class BorrarCancionController {
     }
 
     function borrarCancion($params=[]) {
-        $task_id = $params[":ID"];
-        $task = $this->model->obtenerCancion($task_id);
+        if($this->authHelper->isLoggedIn()){
+            $task_id = $params[":ID"];
+            $task = $this->model->obtenerCancion($task_id);
 
-        if($task) {
-            $this->model->borrarCancion($task_id);
-            $this->view->response("Cancion id: ".$task_id." eliminada exitosamente", 200);
+            if($task) {
+                $this->model->borrarCancion($task_id);
+                $this->view->response("Cancion id: ".$task_id." eliminada exitosamente", 200);
+            }
+            else {
+                $this->view->response("Cancion id: ".$task_id." no fue encontrada", 404);
+            }
         }
-        else {
-            $this->view->response("Cancion id: ".$task_id." no fue encontrada", 404);
+        else{
+            $this->view->response("No estas logueado", 401);
         }
     }
+    
 
 
 }

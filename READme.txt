@@ -51,5 +51,10 @@ API TOKEN:
 Obtene tu "token" ingresando "auth/token" en la url para ingresar y en la cabecera "Authorization" elegir entre las opciones "Basic auth".
 En caso de estar logueado, copiar el "token", elegir entre las opciones "OAuth 2.0" y pegar el "token" en el campo que indica "Access token".
 
-Usuario: pepito
-Contraseña: tpeapi
+//Usuario 1
+Usuario: Pepito
+Contraseña: 456789
+
+//Usuario 2
+Usuario: ariel
+Contraseña: 123456
