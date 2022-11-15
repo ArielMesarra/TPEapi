@@ -22,7 +22,7 @@ class AgreditarCancionesController extends AbsController{
         }
         else{
             $id = $params[":ID"];
-            $task = $this->model->obtenerCanciones($id);
+            $task = $this->model->obtenerCancion($id);
             if($task){
                 $this->model->editarCancion($this->obtenerDatos(), $params[":ID"]);             
                 $this->view->response("La cancion id: ".$params[":ID"]." se edito correctamente", 200);   

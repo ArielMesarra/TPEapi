@@ -8,12 +8,11 @@ abstract class VerificacionController{
     protected $filtroValor = "";
 
     function verificar($referencia, $columna){
-        echo "entraste a verificar";
         $por = "";
         $filtro = "";
-        if(isset($_GET["desde"])&&isset($_GET["hasta"])){
+        if(isset($_GET["desde"])&&isset($_GET["cantidad"])){
             $this->desde = $_GET["desde"];
-            $this->hasta = $_GET["hasta"];
+            $this->hasta = $_GET["cantidad"];
         }
 
         if(isset($_GET["por"])){
@@ -43,7 +42,7 @@ abstract class VerificacionController{
         
 
         
-        if(isset($_GET['order'])&&$_GET['order']=="DESC")$this->order = "DESC";
+        if(isset($_GET['order'])&&strtoupper($_GET['order'])=="DESC")$this->order = "DESC";
     }
     
 }
