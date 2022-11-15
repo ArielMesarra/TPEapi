@@ -1,8 +1,9 @@
 <?php
 require_once "app/models/ArtistasModel.php";
 require_once "app/views/JsonApiView.php";
+require_once "app/absController/VerificacionController.php";
 
-class ObtenerArtistasController{
+class ObtenerArtistasController extends VerificacionController{
     private $model;
     private $view;
     function __construct() {
@@ -13,7 +14,9 @@ class ObtenerArtistasController{
 
     function obtenerArtistas($params=[]){
         if(empty($params)) {
-            $artistas = $this->model->obtenerArtistas();
+            $referencia = $this->model->obtenerArtistas(0,1,"nombre_artistas", "ASC", "nombre_artistas", "");
+            $this->verificar($referencia, "id_artistas");
+            $artistas = $this->model->obtenerArtistas($this->desde, $this->hasta, $this->columna, $this->order, $this->filtro, $this->filtroValor);
             $this->view->response($artistas, 200);
         }
         else {
