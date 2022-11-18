@@ -1,14 +1,12 @@
 <?php
 require_once "app/models/CancionesModel.php";
-require_once "app/views/JsonApiView.php";
+require_once "app/absController/AbsController.php";
 
-class BorrarCancionController {
-    private $model;
-    private $view;
+class BorrarCancionController extends AbsController{
 
     function __construct() {
+        parent::__construct();
         $this->model = new CancionesModel();
-        $this->view = new JSONAPIView();
     }
 
     function borrarCancion($params=[]) {

@@ -14,6 +14,7 @@ class ObtenerArtistasController extends VerificacionController{
 
     function obtenerArtistas($params=[]){
         if(empty($params)) {
+            //se podria haber traido con "SHOW COLUMNS", pero preferimos usar este metodo porque era menos codigo y como exigimos que esten todos los campos llenos, este metodo funciona.
             $referencia = $this->model->obtenerArtistas(0,1,"nombre_artistas", "ASC", "nombre_artistas", "");
             $this->verificar($referencia, "id_artistas");
             $artistas = $this->model->obtenerArtistas($this->desde, $this->hasta, $this->columna, $this->order, $this->filtro, $this->filtroValor);
