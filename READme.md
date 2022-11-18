@@ -1,17 +1,17 @@
-# __MUSICO-API-TECA ONLINE__
+# __MUSI-API-COTECA ONLINE__
 
 ## ¿De que trata ésta Api?
 
-Brindamos un servicio de acceso a nuestra base de datos  **"Musico-Api-Teca On Line"** Donde podes obtener la mejor musica de la zona y mucha info de diversos artistas.
+Brindamos un servicio de acceso a nuestra base de datos  **"Musi-Api-CoTeca On Line"** Donde podes obtener la mejor musica de la zona y mucha info de diversos artistas.
 
 ## ¿COMO?
 
 1. Canciones:
     - 1.1 [Obtener un listado de todas las canciónes](#traer-todas-las-canciones) 
-    - 1.2 [Obtener datos de una sola canción](#traer-una-cancion)
+    - 1.2 [Obtener datos de una sola canción](#traer-una-canción)
     - 1.3 [Agregar una canción](#quiero-agregar-una-cancion)
-    - 1.4 [Editar una canción](#quiero-modificar-una-cancion) 
-    - 1.5 [Borrar una canción](#quiero-borrar-una-cancion)
+    - 1.4 [Editar una canción](#quiero-modificar-una-canción) 
+    - 1.5 [Borrar una canción](#quiero-borrar-una-canción)
 2. Artistas:
     - 2.1 [Obtener un listado de todos los artistas](#quiero-ver-los-artistas) 
     - 2.2 [Obtener datos de un solo artista](#quiero-ver-un-solo-artista)
@@ -20,25 +20,35 @@ Brindamos un servicio de acceso a nuestra base de datos  **"Musico-Api-Teca On L
     - 2.5 [Borrar un artista](#quiero-borrar-un-artista)
 3. Autentificacion:
     - 3.1 [¿Como me logueo?](#para-registrarme)
-    - 3.2 [Como paginar](#paginacion)
+    - 3.2 [Como paginar](#paginación)
     - 3.4 [Como ordenar](#ordenado-por)
-    - 3.3 [Como filtrar](#busqueda-y-filtrado)
+    - 3.3 [Como filtrar](#búsqueda-y-filtrado)
     - 3.5 [Endpoints](#endpoints)
     - 3.6 [Contacto](#contactanos-para-ponernos-un-10)
 
 #
+
+
+
+
+
 # Todo sobre Canciones
 ## __Traer todas las canciones__
 Haciendo un __GET__ de este endpoint podes obtener todas las canciones disponibles!!!
 
 > api/canciones 
 
+## __Traer una canción__
 Si conocés el numero de Id de tu cancion preferida, la podes solicitar asi agregando el numero al final.
 
 > api/canciones/:ID
 
 Ejemplo:
 > api/canciones/5
+
+
+
+
 
 
 ## Si estás registrado podes __agregar, editar y borrar canciones.__
@@ -61,6 +71,11 @@ Después copia el "token", elegir entre las opciones "OAuth 2.0" y pegá el "tok
 
 ## Ahora si!
 
+
+
+
+
+
 ## Quiero __AGREGAR__ una cancion.
 
 Es muy sencillo.
@@ -78,6 +93,12 @@ Mandanos un JSON como eśte:
 + No aceptamos campos vacios.
 + Prestá atnción a la fecha
 + El id del artista lo agerga nuestra plataforma, vos solo tenes que elejir de tu check-box. Si lo ingresas manualmente y no existe un error te lo hará saber.
+
+
+
+
+
+
 
 ## Quiero __MODIFICAR__ una canción.
 
@@ -97,21 +118,33 @@ Ejemplo:
 
 Asegurate de que el verbo sea PUT.
 
+
+
+
+
+
 ## Quiero __BORRAR__ una canción:
 
 Si sabes el id, seteá el verbo DELETE y el endpoint con id.<br>
 Ejemplo:<br>
 > api/canciones/5
 + Una vez borrado, no va a haber manera de recuperarlo.
-
 #
+
+
+
+
+
+
 # Todo sobre los Artistas:
 Todo lo que se puede hacer con las canciones se puede hacer con los artistas, solo indicando el endpoint correcto.
 
 ## Quiero ver los Artistas:
-> api/artsitas 
 con el verbo GET obtenes un listado con todos nuestros artistas.
+> api/artsitas
 
+
+## Quiero ver un solo artista
 Si querés uno en particular, le agregas el id
 > api/artistas/id
 
@@ -161,7 +194,7 @@ Ejemplo:
 
 Con **Musico-Api-Teca On Line** podes acceder a:
 
-## __PAGINACIÓN:__
+## __PAGINACIÓN__
 Agregá parámetros de consulta a las solicitudes GET:
 api/canciones o artistas?desde=X&cantidad=X 
 
